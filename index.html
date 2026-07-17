@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BiteDash | Premium Food Delivery Anytime</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+  </head>
+  <body class="bg-[#F8F9FA] dark:bg-zinc-950 font-sans text-gray-800 dark:text-zinc-200 transition-colors duration-300 antialiased selection:bg-orange-500 selection:text-white">
+
+    <!-- Sticky Navigation Bar -->
+    <header id="main-nav" class="sticky top-0 z-40 w-full bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md border-b border-gray-100 dark:border-zinc-800 transition-all duration-300">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-orange-500 to-amber-550 flex items-center justify-center text-white shadow-md shadow-orange-500/25 group-hover:scale-105 active:scale-95 transition-all">
+            <span class="text-xl font-black">B</span>
+          </div>
+          <span class="text-xl font-black tracking-tight bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-zinc-300 bg-clip-text text-transparent group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors">Bite<span class="text-orange-500">Dash</span></span>
+        </a>
+
+        <!-- Desktop Navigation Links -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-600 dark:text-zinc-300">
+          <a href="index.html" class="text-orange-500 dark:text-orange-400 hover:text-orange-500 transition-colors py-1.5 border-b-2 border-orange-500">Home</a>
+          <a href="restaurants.html" class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors py-1.5 border-b-2 border-transparent hover:border-orange-500">Restaurants</a>
+          <a href="restaurants.html?category=Pizza" class="hover:text-orange-500 dark:hover:text-orange-400 transition-colors py-1.5 border-b-2 border-transparent hover:border-orange-500">Offers</a>
+        </nav>
+
+        <!-- Navbar Controls -->
+        <div class="flex items-center gap-3">
+          <!-- Dark Mode Toggle -->
+          <button id="dark-mode-toggle" class="p-2.5 rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:scale-105 active:scale-95 transition-all cursor-pointer" aria-label="Toggle Theme">
+            <!-- SVG injected by JS -->
+          </button>
+
+          <!-- Cart Toggle Button -->
+          <button class="cart-drawer-open-btn relative p-2.5 rounded-xl bg-orange-500/10 dark:bg-orange-500/5 hover:bg-orange-500 text-orange-500 hover:text-white! hover:scale-105 active:scale-95 transition-all cursor-pointer flex items-center justify-center gap-1.5 group" aria-label="Open Cart">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5 shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+            </svg>
+            <span class="hidden sm:inline text-xs font-bold uppercase tracking-wider">Cart</span>
+            <!-- Cart Count Badge -->
+            <span class="cart-count-badge absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-orange-600 text-white text-[10px] font-black items-center justify-center shadow-xs hidden scale-0 transition-transform duration-300">0</span>
+          </button>
+
+          <!-- Login Button -->
+          <button id="login-btn" class="hidden sm:inline-flex items-center justify-center px-5 py-2.5 rounded-xl bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold text-xs uppercase tracking-wider hover:bg-orange-500 dark:hover:bg-orange-500 hover:text-white! dark:hover:text-white! hover:scale-105 active:scale-95 transition-all cursor-pointer shadow-sm">
+            Login
+          </button>
+
+          <!-- Mobile Menu Button -->
+          <button id="mobile-menu-btn" class="md:hidden p-2.5 rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 text-gray-700 dark:text-zinc-300 cursor-pointer" aria-label="Open Mobile Menu">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Mobile Navigation Drawer Overlay -->
+    <div id="mobile-nav-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-45 hidden opacity-0 transition-opacity duration-300"></div>
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobile-nav" class="fixed top-0 bottom-0 left-0 w-72 max-w-xs bg-white dark:bg-zinc-900 z-50 shadow-2xl border-r border-gray-100 dark:border-zinc-850 -translate-x-full transition-transform duration-300 flex flex-col justify-between p-6">
+      <div>
+        <div class="flex items-center justify-between mb-8">
+          <a href="index.html" class="flex items-center gap-2">
+            <div class="w-8 h-8 rounded-lg bg-orange-500 flex items-center justify-center text-white font-black text-sm">B</div>
+            <span class="font-extrabold text-base tracking-tight text-gray-900 dark:text-white">Bite<span class="text-orange-500">Dash</span></span>
+          </a>
+        </div>
+        <nav class="flex flex-col gap-5 text-sm font-semibold">
+          <a href="index.html" class="text-orange-500 dark:text-orange-400">Home</a>
+          <a href="restaurants.html" class="text-gray-700 dark:text-zinc-300 hover:text-orange-500 transition-colors">Restaurants</a>
+          <a href="restaurants.html?category=Healthy" class="text-gray-700 dark:text-zinc-300 hover:text-orange-500 transition-colors">Healthy Bites</a>
+          <a href="restaurants.html?category=Pizza" class="text-gray-700 dark:text-zinc-300 hover:text-orange-500 transition-colors">Offers & Deals</a>
+        </nav>
+      </div>
+      <div id="mobile-auth-container">
+        <button id="mobile-login-btn" class="w-full bg-gray-900 dark:bg-white text-white dark:text-gray-900 font-bold py-3 rounded-xl text-xs uppercase tracking-wider hover:bg-orange-500 dark:hover:bg-orange-500 hover:text-white! dark:hover:text-white! transition-all cursor-pointer">
+          Login / Signup
+        </button>
+      </div>
+    </div>
+
+    <!-- Hero Section -->
+    <section id="hero-section" class="relative overflow-hidden bg-white dark:bg-zinc-900 border-b border-gray-100 dark:border-zinc-800/50 py-16 sm:py-24 md:py-32">
+      <!-- Ambient background grid design pattern -->
+      <div class="absolute inset-0 bg-[radial-gradient(ellipse_at_top_right,rgba(252,128,25,0.08),transparent_50%)] pointer-events-none"></div>
+      
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+        <!-- Content -->
+        <div class="lg:col-span-7 text-left">
+          <span class="inline-flex items-center gap-1.5 bg-orange-500/10 dark:bg-orange-500/5 text-orange-500 dark:text-orange-400 text-xs font-extrabold px-3.5 py-1.5 rounded-full uppercase tracking-wider mb-6">
+            ✨ Premium Food Delivery Service
+          </span>
+          <h1 class="text-4xl sm:text-5xl md:text-6xl font-black tracking-tight text-gray-900 dark:text-white leading-none">
+            Order Delicious <br class="hidden sm:inline">Food <span class="text-orange-500">Anytime</span>
+          </h1>
+          <p class="mt-4 text-base sm:text-lg text-gray-500 dark:text-zinc-400 max-w-xl font-medium leading-relaxed">
+            Discover culinary masterpieces from the finest premium kitchens and local hot spots in your area. Delivered piping hot to your doorstep.
+          </p>
+
+          <!-- Search Bar Form -->
+          <form id="home-search-form" class="mt-8 max-w-lg relative flex flex-col sm:flex-row gap-2.5">
+            <div class="relative flex-grow">
+              <span class="absolute inset-y-0 left-0 flex items-center pl-4 text-gray-400">
+                <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                </svg>
+              </span>
+              <input type="text" id="home-search-input" placeholder="Search for restaurants, cuisines, or dishes..." class="w-full bg-gray-50 dark:bg-zinc-800 border border-gray-200 dark:border-zinc-700 focus:border-orange-500 focus:ring-1 focus:ring-orange-500 rounded-xl py-3.5 pl-12 pr-4 text-sm font-semibold placeholder-gray-400 outline-hidden transition-all text-gray-800 dark:text-zinc-200" required>
+            </div>
+            <button type="submit" class="bg-orange-500 hover:bg-orange-600 text-white font-extrabold px-7 py-3.5 rounded-xl text-xs uppercase tracking-wider hover:scale-105 active:scale-95 transition-all shadow-md shadow-orange-500/20 hover:shadow-lg cursor-pointer">
+              Search
+            </button>
+          </form>
+
+          <!-- Highlights Row -->
+          <div class="flex items-center gap-6 mt-10 text-gray-400 dark:text-zinc-500 text-xs font-extrabold uppercase tracking-wider border-t border-gray-100 dark:border-zinc-800 pt-8">
+            <span class="flex items-center gap-1.5 text-gray-500 dark:text-zinc-400">
+              <span class="w-2.5 h-2.5 rounded-full bg-green-500"></span> 20+ Premium Brands
+            </span>
+            <span>•</span>
+            <span class="flex items-center gap-1.5 text-gray-500 dark:text-zinc-400">
+              <span class="w-2.5 h-2.5 rounded-full bg-orange-500"></span> Fast 20 Min Delivery
+            </span>
+          </div>
+        </div>
+
+        <!-- Hero Graphic -->
+        <div class="lg:col-span-5 relative flex justify-center">
+          <div class="relative w-full max-w-sm aspect-square rounded-3xl bg-orange-500/10 dark:bg-orange-500/5 flex items-center justify-center border border-orange-500/20 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&auto=format&fit=crop&q=80" alt="Tasty food layout" class="w-[90%] h-[90%] object-cover rounded-2xl shadow-xl hover:rotate-2 transition-transform duration-500">
+            <!-- Decorative floating cards -->
+            <div class="absolute top-6 left-6 bg-white dark:bg-zinc-800 p-3 rounded-xl shadow-md flex items-center gap-2 border border-gray-100 dark:border-zinc-700/60 animate-bounce" style="animation-duration: 4s;">
+              <span class="text-xl">🍕</span>
+              <div>
+                <h4 class="font-bold text-[10px] text-gray-800 dark:text-white">Hot Pizza</h4>
+                <p class="text-[8px] text-gray-400">Freshly Baked</p>
+              </div>
+            </div>
+            <div class="absolute bottom-6 right-6 bg-white dark:bg-zinc-800 p-3 rounded-xl shadow-md flex items-center gap-2 border border-gray-100 dark:border-zinc-700/60 animate-bounce" style="animation-duration: 6s;">
+              <span class="text-xl">🍔</span>
+              <div>
+                <h4 class="font-bold text-[10px] text-gray-800 dark:text-white">Gourmet Burger</h4>
+                <p class="text-[8px] text-gray-400">Smash Grilled</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Promotional Offers Banner Slider Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+      <div class="flex items-center justify-between mb-6">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-gray-900 dark:text-white tracking-tight">Best Offers For You</h2>
+          <p class="text-xs text-gray-400 dark:text-zinc-500 mt-1 font-semibold uppercase tracking-wider">Deals of the Week</p>
+        </div>
+        <div class="flex items-center gap-2">
+          <button id="promo-prev-btn" class="w-10 h-10 rounded-xl bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 flex items-center justify-center text-gray-600 dark:text-zinc-300 hover:bg-gray-50 dark:hover:bg-zinc-700 active:scale-95 transition-all shadow-xs cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M15 19l-7-7 7-7" /></svg>
+          </button>
+          <button id="promo-next-btn" class="w-10 h-10 rounded-xl bg-white dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 flex items-center justify-center text-gray-600 dark:text-zinc-300 hover:bg-gray-50 dark:hover:bg-zinc-700 active:scale-95 transition-all shadow-xs cursor-pointer">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+          </button>
+        </div>
+      </div>
+
+      <div id="promo-slider-container" class="relative overflow-hidden rounded-3xl">
+        <div id="promo-slider-track" class="flex transition-transform duration-500 ease-out">
+          <!-- Dynamically populated from JS -->
+        </div>
+        
+        <!-- Interactive Dots -->
+        <div id="promo-dots" class="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 z-10">
+          <!-- Injected dynamically -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Food Categories List Grid Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16">
+      <div class="text-left mb-8">
+        <h2 class="text-xl sm:text-2xl font-black text-gray-900 dark:text-white tracking-tight">What's on your mind?</h2>
+        <p class="text-xs text-gray-400 dark:text-zinc-500 mt-1 font-semibold uppercase tracking-wider">Fast and Premium Cuisines</p>
+      </div>
+
+      <!-- Categories Track -->
+      <div id="categories-container" class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-4">
+        <!-- Loaded Dynamically -->
+      </div>
+    </section>
+
+    <!-- Featured Restaurants Section -->
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-16 border-t border-gray-100 dark:border-zinc-900">
+      <div class="flex items-center justify-between mb-8">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-gray-900 dark:text-white tracking-tight">Top Rated Restaurants</h2>
+          <p class="text-xs text-gray-400 dark:text-zinc-500 mt-1 font-semibold uppercase tracking-wider">Highly recommended spots near you</p>
+        </div>
+        <a href="restaurants.html" class="inline-flex items-center gap-1 bg-orange-500/10 dark:bg-orange-500/5 text-orange-500 dark:text-orange-400 font-extrabold text-xs uppercase px-4 py-2.5 rounded-xl hover:bg-orange-500 hover:text-white! transition-all shadow-xs">
+          Explore All
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-3.5 h-3.5 text-current" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7" /></svg>
+        </a>
+      </div>
+
+      <div id="featured-restaurants-container" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+        <!-- Loaded Dynamically -->
+      </div>
+    </section>
+
+    <!-- Shopping Cart Slide-Out Drawer Panel -->
+    <div id="cart-drawer-overlay" class="fixed inset-0 bg-black/60 backdrop-blur-xs z-45 hidden opacity-0 transition-all duration-300"></div>
+    <div id="cart-drawer" class="fixed top-0 bottom-0 right-0 w-full sm:w-[460px] max-w-full bg-gray-50 dark:bg-zinc-900 border-l border-gray-100 dark:border-zinc-850 z-50 shadow-2xl translate-x-full transition-transform duration-300 flex flex-col justify-between overflow-hidden">
+      <!-- Drawer Header -->
+      <div class="p-4 sm:p-6 bg-white dark:bg-zinc-800 border-b border-gray-150 dark:border-zinc-700/60 flex items-center justify-between shadow-xs">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-500">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-4.5 h-4.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>
+          </div>
+          <div>
+            <h3 class="font-extrabold text-base text-gray-800 dark:text-zinc-100">My Food Order</h3>
+            <!-- Active Ordering Restaurant -->
+            <p id="cart-restaurant-name" class="text-[10px] text-gray-400 dark:text-zinc-500 font-extrabold uppercase tracking-wider mt-0.5">Empty Cart</p>
+          </div>
+        </div>
+        <div class="flex items-center gap-2">
+          <!-- Clear All -->
+          <button id="clear-cart-btn" class="text-[10px] text-gray-400 hover:text-red-500 font-bold uppercase tracking-wider border border-gray-200 dark:border-zinc-700 hover:border-red-200 rounded-md px-2 py-1 cursor-pointer transition-colors">Clear</button>
+          
+          <button class="cart-drawer-close-btn p-2 rounded-xl text-gray-500 hover:bg-gray-100 dark:hover:bg-zinc-700 cursor-pointer" aria-label="Close Cart">
+            <svg xmlns="http://www.w3.org/2000/svg" class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Drawer Content Container (Scrollable) -->
+      <div class="flex-grow overflow-y-auto p-4 sm:p-6" id="cart-drawer-items">
+        <!-- Items loaded dynamically -->
+      </div>
+
+      <!-- Empty Cart State -->
+      <div id="cart-empty-state" class="flex-grow flex flex-col items-center justify-center text-center p-6 bg-white dark:bg-zinc-900 hidden">
+        <span class="text-6xl animate-pulse">🛒</span>
+        <h4 class="font-extrabold text-lg text-gray-800 dark:text-zinc-150 mt-4">Your cart is empty</h4>
+        <p class="text-xs text-gray-400 dark:text-zinc-500 mt-2 max-w-[240px] leading-relaxed">
+          Good food is always cooking! Go ahead and add some items from the menu page to make an order.
+        </p>
+        <a href="restaurants.html" class="cart-drawer-close-btn mt-6 inline-block bg-orange-500 hover:bg-orange-600 text-white font-extrabold text-xs uppercase tracking-wider px-6 py-3 rounded-xl cursor-pointer shadow-md shadow-orange-500/20">
+          Order Food Now
+        </a>
+      </div>
+
+      <!-- Drawer Checkout/Calculations Panel -->
+      <div id="cart-checkout-section" class="p-4 sm:p-6 bg-white dark:bg-zinc-800 border-t border-gray-150 dark:border-zinc-700/60 shadow-lg hidden">
+        <!-- Promo Coupon Apply Widget -->
+        <div class="mb-4">
+          <form id="coupon-apply-form" class="flex gap-2">
+            <input type="text" id="coupon-input" placeholder="Enter Coupon (WELCOME50, FREEPERK)" class="flex-grow bg-gray-50 dark:bg-zinc-900 border border-gray-200 dark:border-zinc-700 rounded-lg py-2.5 px-3 text-xs font-semibold uppercase placeholder-gray-400 outline-hidden transition-all text-gray-800 dark:text-zinc-200 focus:border-orange-500">
+            <button type="submit" class="bg-gray-900 dark:bg-zinc-700 hover:bg-orange-500 text-white font-bold px-4 py-2.5 rounded-lg text-xs transition-colors cursor-pointer">Apply</button>
+          </form>
+          <!-- Message holder -->
+          <div id="coupon-message" class="text-[10px] mt-1 hidden"></div>
+        </div>
+
+        <!-- Coupon Applied Banner -->
+        <div id="coupon-applied-section" class="mb-4 p-3 bg-emerald-500/10 border border-emerald-500/20 rounded-xl flex items-center justify-between hidden">
+          <div class="flex items-center gap-1.5 text-emerald-600 dark:text-emerald-400">
+            <span class="text-sm">🎉</span>
+            <span id="applied-coupon-text" class="text-xs font-extrabold tracking-tight">WELCOME50 Applied</span>
+          </div>
+          <button id="remove-coupon-btn" class="text-[10px] font-bold text-gray-400 hover:text-red-500 uppercase cursor-pointer">Remove</button>
+        </div>
+
+        <!-- Cost Breakdown List -->
+        <div class="space-y-2 border-b border-gray-100 dark:border-zinc-700/60 pb-4 text-xs font-semibold text-gray-500 dark:text-zinc-400">
+          <div class="flex justify-between items-center">
+            <span>Subtotal</span>
+            <span id="cart-summary-subtotal" class="font-extrabold text-gray-800 dark:text-zinc-200">₹0</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span>GST (5%)</span>
+            <span id="cart-summary-gst" class="font-extrabold text-gray-800 dark:text-zinc-200">₹0</span>
+          </div>
+          <div class="flex justify-between items-center">
+            <span>Delivery Fee</span>
+            <span id="cart-summary-delivery" class="font-extrabold text-gray-800 dark:text-zinc-200">₹40</span>
+          </div>
+          <div id="cart-summary-discount-row" class="flex justify-between items-center text-green-500 hidden font-bold">
+            <span>Coupon Discount</span>
+            <span id="cart-summary-discount">-₹0</span>
+          </div>
+        </div>
+
+        <!-- Grand Total & Place Order -->
+        <div class="flex items-center justify-between mt-4">
+          <div>
+            <span class="text-[10px] text-gray-400 uppercase tracking-widest font-black">To Pay</span>
+            <div id="cart-summary-total" class="text-xl font-black text-gray-900 dark:text-white tracking-tight">₹0</div>
+          </div>
+          <a href="checkout.html" id="cart-checkout-btn" class="bg-orange-500 hover:bg-orange-600 text-white font-extrabold px-8 py-3.5 rounded-xl text-xs uppercase tracking-wider hover:scale-105 active:scale-95 transition-all shadow-md shadow-orange-500/20 cursor-pointer">
+            Proceed to Checkout
+          </a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page Footer -->
+    <footer class="bg-gray-900 text-gray-300 dark:bg-zinc-950 dark:text-zinc-400 border-t border-gray-800 dark:border-zinc-900 mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+        <!-- Logo and About -->
+        <div class="md:col-span-4 flex flex-col justify-between">
+          <div>
+            <a href="index.html" class="flex items-center gap-2 group">
+              <div class="w-8 h-8 rounded-lg bg-orange-500 flex items-center justify-center text-white font-black text-sm">B</div>
+              <span class="font-black text-base tracking-tight text-white">Bite<span class="text-orange-500">Dash</span></span>
+            </a>
+            <p class="mt-4 text-xs text-gray-400 leading-relaxed font-medium">
+              We're dedicated to bringing your favorite meals closer to you. Seamless food ordering, authentic ingredients, and blazing fast delivery in your area.
+            </p>
+          </div>
+          <!-- Newsletter Subscription -->
+          <div class="mt-8">
+            <h4 class="text-xs font-black uppercase tracking-widest text-white mb-3">Newsletter</h4>
+            <form class="flex gap-2 max-w-sm" onsubmit="event.preventDefault(); alert('Subscribed to Newsletter!'); this.reset();">
+              <input type="email" placeholder="Your Email address" class="flex-grow bg-gray-850 dark:bg-zinc-900 border border-gray-800 dark:border-zinc-800 rounded-lg px-3 py-2 text-xs font-medium text-white outline-hidden focus:border-orange-500" required>
+              <button class="bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs px-4 rounded-lg cursor-pointer">Join</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Links Columns -->
+        <div class="md:col-span-2">
+          <h4 class="text-xs font-black uppercase tracking-widest text-white mb-4">Company</h4>
+          <ul class="space-y-3.5 text-xs font-semibold">
+            <li><a href="#" class="hover:text-orange-500 transition-colors">About Us</a></li>
+            <li><a href="#" class="hover:text-orange-500 transition-colors">Team Careers</a></li>
+            <li><a href="#" class="hover:text-orange-500 transition-colors">Bite Blog</a></li>
+            <li><a href="#" class="hover:text-orange-500 transition-colors">Gift Cards</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-2">
+          <h4 class="text-xs font-black uppercase tracking-widest text-white mb-4">Legal</h4>
+          <ul class="space-y-3.5 text-xs font-semibold">
+            <li><a href="#" class="hover:text-orange-500 transition-colors">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-orange-500 transition-colors">Terms of Service</a></li>
+            <li><a href="#" class="hover:text-orange-500 transition-colors">Refund & Cancellations</a></li>
+            <li><a href="#" class="hover:text-orange-500 transition-colors">Merchant Policy</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-4">
+          <h4 class="text-xs font-black uppercase tracking-widest text-white mb-4">Contact & Socials</h4>
+          <ul class="space-y-3.5 text-xs font-semibold">
+            <li class="flex items-center gap-2">
+              <span class="text-orange-500">📍</span> 100 Tech Hub Blvd, Silicon Sector
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-orange-500">📧</span> support@bitedash.com
+            </li>
+          </ul>
+          
+          <!-- Social Icons -->
+          <div class="flex items-center gap-3 mt-6">
+            <a href="#" class="w-8 h-8 rounded-lg bg-gray-800 hover:bg-orange-500 flex items-center justify-center hover:scale-105 active:scale-95 transition-all text-white font-bold" aria-label="Facebook">F</a>
+            <a href="#" class="w-8 h-8 rounded-lg bg-gray-800 hover:bg-orange-500 flex items-center justify-center hover:scale-105 active:scale-95 transition-all text-white font-bold" aria-label="Twitter">T</a>
+            <a href="#" class="w-8 h-8 rounded-lg bg-gray-800 hover:bg-orange-500 flex items-center justify-center hover:scale-105 active:scale-95 transition-all text-white font-bold" aria-label="Instagram">I</a>
+            <a href="#" class="w-8 h-8 rounded-lg bg-gray-800 hover:bg-orange-500 flex items-center justify-center hover:scale-105 active:scale-95 transition-all text-white font-bold" aria-label="LinkedIn">L</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-800 dark:border-zinc-900 py-6 text-center text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+        &copy; 2026 BiteDash Foodtech Ltd. All Rights Reserved. Crafted with pure dedication.
+      </div>
+    </footer>
+
+    <!-- Core App Module Scripts -->
+    <script type="module" src="/js/app.js"></script>
+  </body>
+</html>

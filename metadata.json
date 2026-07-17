@@ -1,0 +1,6 @@
+{
+  "name": "Food Delivery Web Application",
+  "description": "A premium, fully functional, and responsive food delivery web application featuring interactive restaurant discovery, dynamic category filters, a robust cart system, dark mode support, and persistent state management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

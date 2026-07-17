@@ -1,0 +1,675 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BiteDash | Premium Checkout Secure</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="/css/responsive.css">
+  </head>
+  <body class="bg-[#F8F9FA] dark:bg-zinc-950 font-sans text-gray-800 dark:text-zinc-200 transition-colors duration-300 antialiased selection:bg-orange-500 selection:text-white">
+
+    <!-- Sticky Navigation Bar -->
+    <header id="main-nav" class="sticky top-0 z-40 w-full bg-white/95 dark:bg-zinc-900/95 backdrop-blur-md border-b border-gray-100 dark:border-zinc-800 transition-all duration-300">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-18 sm:h-20 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="index.html" class="flex items-center gap-2 group">
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-orange-500 to-amber-550 flex items-center justify-center text-white shadow-md shadow-orange-500/25 group-hover:scale-105 active:scale-95 transition-all">
+            <span class="text-xl font-black">B</span>
+          </div>
+          <span class="text-xl font-black tracking-tight bg-gradient-to-r from-gray-900 to-gray-700 dark:from-white dark:to-zinc-300 bg-clip-text text-transparent group-hover:text-orange-500 dark:group-hover:text-orange-400 transition-colors">Bite<span class="text-orange-500">Dash</span></span>
+        </a>
+
+        <!-- Navigation Links -->
+        <nav class="hidden md:flex items-center gap-8 text-sm font-semibold text-gray-600 dark:text-zinc-300">
+          <a href="index.html" class="hover:text-orange-500 transition-colors py-1.5 border-b-2 border-transparent">Home</a>
+          <a href="restaurants.html" class="hover:text-orange-500 transition-colors py-1.5 border-b-2 border-transparent">Restaurants</a>
+          <span class="text-gray-400 dark:text-zinc-600 font-extrabold cursor-default uppercase text-[10px] bg-gray-50 dark:bg-zinc-850 border border-gray-100 dark:border-zinc-800 px-3 py-1 rounded-md flex items-center gap-1.5 shrink-0 select-none">
+            🔒 Secure 256-bit Checkout
+          </span>
+        </nav>
+
+        <!-- Navbar Controls -->
+        <div class="flex items-center gap-3">
+          <!-- Dark Mode Toggle -->
+          <button id="dark-mode-toggle" class="p-2.5 rounded-xl bg-gray-50 dark:bg-zinc-800 border border-gray-100 dark:border-zinc-700 hover:bg-gray-100 dark:hover:bg-zinc-700 hover:scale-105 active:scale-95 transition-all cursor-pointer" aria-label="Toggle Theme">
+            <!-- SVG injected by JS -->
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Checkout Grid -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+      <!-- Title -->
+      <div class="text-left mb-8">
+        <h1 class="text-2xl sm:text-4xl font-black text-gray-900 dark:text-white tracking-tight">Checkout Secure</h1>
+        <p class="text-xs text-gray-400 dark:text-zinc-500 mt-1 font-semibold uppercase tracking-wider">Review address and settle billing securely</p>
+      </div>
+
+      <!-- Empty Checkout State -->
+      <div id="checkout-empty-state" class="text-center py-24 bg-white dark:bg-zinc-900 border border-gray-100 dark:border-zinc-800 rounded-3xl max-w-lg mx-auto shadow-sm hidden">
+        <span class="text-6xl">🍲</span>
+        <h3 class="font-extrabold text-xl text-gray-800 dark:text-zinc-150 mt-4">Your order is empty</h3>
+        <p class="text-xs text-gray-400 dark:text-zinc-500 mt-2 max-w-xs mx-auto leading-relaxed">
+          Please add dishes from a restaurant's menu before attempting to check out!
+        </p>
+        <a href="restaurants.html" class="mt-6 inline-block bg-orange-500 hover:bg-orange-600 text-white text-xs font-bold px-6 py-2.5 rounded-xl cursor-pointer shadow-md">
+          Explore Cuisines
+        </a>
+      </div>
+
+      <!-- Core Checkout Container -->
+      <div id="checkout-container" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+        
+        <!-- Left Side: Address & Settle Panel (8 Cols) -->
+        <form id="checkout-form" class="lg:col-span-7 xl:col-span-8 flex flex-col gap-6">
+          
+          <!-- 1. Delivery Details Panel -->
+          <div class="bg-white dark:bg-zinc-900 p-6 sm:p-8 rounded-3xl border border-gray-100 dark:border-zinc-800 shadow-xs">
+            <h3 class="text-lg font-black text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+              <span class="w-7 h-7 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-500 text-sm">1</span>
+              Delivery Address
+            </h3>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div class="flex flex-col gap-1.5 col-span-2 sm:col-span-1">
+                <label class="text-[10px] font-black uppercase tracking-wider text-gray-400 dark:text-zinc-500">Full Name</label>
+                <input type="text" id="checkout-name" placeholder="Rohit Mishra" class="bg-gray-50 dark:bg-zinc-950 border border-gray-150 dark:border-zinc-850 rounded-xl py-3 px-4 text-xs font-semibold focus:border-orange-500 outline-hidden text-gray-850 dark:text-zinc-200" required>
+              </div>
+
+              <div class="flex flex-col gap-1.5 col-span-2 sm:col-span-1">
+                <label class="text-[10px] font-black uppercase tracking-wider text-gray-400 dark:text-zinc-500">Phone Number</label>
+                <input type="tel" id="checkout-phone" placeholder="+91 98765 43210" class="bg-gray-50 dark:bg-zinc-950 border border-gray-150 dark:border-zinc-850 rounded-xl py-3 px-4 text-xs font-semibold focus:border-orange-500 outline-hidden text-gray-850 dark:text-zinc-200" required>
+              </div>
+
+              <div class="flex flex-col gap-1.5 col-span-2">
+                <label class="text-[10px] font-black uppercase tracking-wider text-gray-400 dark:text-zinc-500">Flat / House Number / Building Name</label>
+                <input type="text" placeholder="Block C, Flat 402, Royal Residency" class="bg-gray-50 dark:bg-zinc-950 border border-gray-150 dark:border-zinc-850 rounded-xl py-3 px-4 text-xs font-semibold focus:border-orange-500 outline-hidden text-gray-850 dark:text-zinc-200" required>
+              </div>
+
+              <div class="flex flex-col gap-1.5 col-span-2">
+                <label class="text-[10px] font-black uppercase tracking-wider text-gray-400 dark:text-zinc-500">Street Name / Area / Sector</label>
+                <input type="text" placeholder="High Street, Sector 15" class="bg-gray-50 dark:bg-zinc-950 border border-gray-150 dark:border-zinc-850 rounded-xl py-3 px-4 text-xs font-semibold focus:border-orange-500 outline-hidden text-gray-850 dark:text-zinc-200" required>
+              </div>
+
+              <div class="flex flex-col gap-1.5">
+                <label class="text-[10px] font-black uppercase tracking-wider text-gray-400 dark:text-zinc-500">City</label>
+                <input type="text" placeholder="Mumbai" class="bg-gray-50 dark:bg-zinc-950 border border-gray-150 dark:border-zinc-850 rounded-xl py-3 px-4 text-xs font-semibold focus:border-orange-500 outline-hidden text-gray-850 dark:text-zinc-200" required>
+              </div>
+
+              <div class="flex flex-col gap-1.5">
+                <label class="text-[10px] font-black uppercase tracking-wider text-gray-400 dark:text-zinc-500">PIN Code</label>
+                <input type="text" placeholder="400001" class="bg-gray-50 dark:bg-zinc-950 border border-gray-150 dark:border-zinc-850 rounded-xl py-3 px-4 text-xs font-semibold focus:border-orange-500 outline-hidden text-gray-850 dark:text-zinc-200" required>
+              </div>
+            </div>
+
+            <!-- Address Type Selectors -->
+            <div class="mt-6 border-t border-gray-50 dark:border-zinc-800/85 pt-6">
+              <span class="text-[10px] font-black uppercase tracking-wider text-gray-400 dark:text-zinc-500 block mb-3">Address Category</span>
+              <div class="grid grid-cols-3 gap-3">
+                <label class="flex items-center justify-center gap-2 py-3 rounded-xl border border-orange-500 bg-orange-500/5 dark:bg-orange-550/5 text-orange-550 text-xs font-bold cursor-pointer transition-all select-none text-center address-type-label" id="addr-home-label">
+                  <input type="radio" name="address-type" value="Home" class="hidden" checked>
+                  🏠 Home
+                </label>
+                <label class="flex items-center justify-center gap-2 py-3 rounded-xl border border-gray-150 dark:border-zinc-850 hover:border-orange-200 text-gray-600 dark:text-zinc-400 text-xs font-semibold cursor-pointer transition-all select-none text-center address-type-label" id="addr-work-label">
+                  <input type="radio" name="address-type" value="Work" class="hidden">
+                  🏢 Work
+                </label>
+                <label class="flex items-center justify-center gap-2 py-3 rounded-xl border border-gray-150 dark:border-zinc-850 hover:border-orange-200 text-gray-600 dark:text-zinc-400 text-xs font-semibold cursor-pointer transition-all select-none text-center address-type-label" id="addr-other-label">
+                  <input type="radio" name="address-type" value="Other" class="hidden">
+                  📍 Other
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. Secure Settlement Panel -->
+          <div class="bg-white dark:bg-zinc-900 p-6 sm:p-8 rounded-3xl border border-gray-100 dark:border-zinc-800 shadow-xs">
+            <h3 class="text-lg font-black text-gray-900 dark:text-white mb-6 flex items-center gap-2">
+              <span class="w-7 h-7 rounded-lg bg-orange-500/10 flex items-center justify-center text-orange-500 text-sm">2</span>
+              Payment Method
+            </h3>
+
+            <div class="space-y-4">
+              <!-- UPI Payment -->
+              <div class="border border-gray-150 dark:border-zinc-850 rounded-2xl p-4 cursor-pointer transition-all hover:border-orange-200 bg-gray-50/50 dark:bg-zinc-950/20" id="pay-method-upi">
+                <label class="flex items-start gap-3 cursor-pointer select-none">
+                  <input type="radio" name="pay-method" value="UPI" class="accent-orange-500 w-4.5 h-4.5 mt-0.5" checked>
+                  <div class="flex-grow">
+                    <span class="block font-bold text-sm text-gray-800 dark:text-zinc-100">Pay via Unified Payments Interface (UPI)</span>
+                    <span class="block text-xs text-gray-400 dark:text-zinc-500 mt-1">Google Pay, PhonePe, Paytm, or BHIM instant secure transfer</span>
+                    
+                    <!-- Nested UPI Input Panel -->
+                    <div class="mt-4 flex gap-2 max-w-sm" id="upi-input-block">
+                      <input type="text" id="upi-id" placeholder="yourname@upi" class="bg-white dark:bg-zinc-900 border border-gray-150 dark:border-zinc-800 rounded-xl py-2 px-3.5 text-xs font-semibold outline-hidden focus:border-orange-500 text-gray-800 dark:text-zinc-200 flex-grow" required>
+                      <button type="button" class="bg-orange-500 hover:bg-orange-600 text-white font-bold text-xs px-4 rounded-xl shrink-0 cursor-pointer" id="upi-verify-btn">Verify</button>
+                    </div>
+                    <div id="upi-status-msg" class="text-[10px] text-green-500 font-semibold mt-1 hidden">✓ UPI ID Verified Successfully</div>
+                  </div>
+                </label>
+              </div>
+
+              <!-- Credit Card Payment -->
+              <div class="border border-gray-150 dark:border-zinc-850 rounded-2xl p-4 cursor-pointer transition-all hover:border-orange-200 bg-gray-50/50 dark:bg-zinc-950/20" id="pay-method-card">
+                <label class="flex items-start gap-3 cursor-pointer select-none">
+                  <input type="radio" name="pay-method" value="Card" class="accent-orange-500 w-4.5 h-4.5 mt-0.5">
+                  <div class="flex-grow">
+                    <span class="block font-bold text-sm text-gray-800 dark:text-zinc-100">Credit or Debit Card</span>
+                    <span class="block text-xs text-gray-400 dark:text-zinc-500 mt-1">Accepting Visa, Mastercard, RuPay, and American Express</span>
+                    
+                    <!-- Nested Card Input Panel -->
+                    <div class="mt-4 grid grid-cols-2 gap-3 max-w-md hidden" id="card-input-block">
+                      <div class="col-span-2 flex flex-col gap-1">
+                        <label class="text-[9px] font-extrabold uppercase text-gray-400 dark:text-zinc-500">Card Number</label>
+                        <input type="text" id="card-number" placeholder="4321 8765 2468 1357" class="bg-white dark:bg-zinc-900 border border-gray-150 dark:border-zinc-800 rounded-xl py-2 px-3 text-xs font-semibold outline-hidden focus:border-orange-500 text-gray-800" maxlength="19">
+                      </div>
+                      
+                      <div class="flex flex-col gap-1">
+                        <label class="text-[9px] font-extrabold uppercase text-gray-400 dark:text-zinc-500">Expiry MM/YY</label>
+                        <input type="text" id="card-expiry" placeholder="12/29" class="bg-white dark:bg-zinc-900 border border-gray-150 dark:border-zinc-800 rounded-xl py-2 px-3 text-xs font-semibold outline-hidden focus:border-orange-500 text-gray-800" maxlength="5">
+                      </div>
+
+                      <div class="flex flex-col gap-1">
+                        <label class="text-[9px] font-extrabold uppercase text-gray-400 dark:text-zinc-500">Secure CVV</label>
+                        <input type="password" id="card-cvv" placeholder="•••" class="bg-white dark:bg-zinc-900 border border-gray-150 dark:border-zinc-800 rounded-xl py-2 px-3 text-xs font-semibold outline-hidden focus:border-orange-500 text-gray-800" maxlength="3">
+                      </div>
+                    </div>
+                  </div>
+                </label>
+              </div>
+
+              <!-- Cash on Delivery -->
+              <div class="border border-gray-150 dark:border-zinc-850 rounded-2xl p-4 cursor-pointer transition-all hover:border-orange-200 bg-gray-50/50 dark:bg-zinc-950/20" id="pay-method-cod">
+                <label class="flex items-start gap-3 cursor-pointer select-none">
+                  <input type="radio" name="pay-method" value="COD" class="accent-orange-500 w-4.5 h-4.5 mt-0.5">
+                  <div class="flex-grow">
+                    <span class="block font-bold text-sm text-gray-800 dark:text-zinc-100">Cash on Delivery (COD)</span>
+                    <span class="block text-xs text-gray-400 dark:text-zinc-500 mt-1">Settle payment in cash or local scanner upon meal delivery</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+          </div>
+          
+        </form>
+
+        <!-- Right Side: Order Summary Column (4 Cols) -->
+        <aside class="lg:col-span-5 flex flex-col gap-6">
+          <div class="bg-white dark:bg-zinc-900 p-6 sm:p-8 rounded-3xl border border-gray-100 dark:border-zinc-800 shadow-xs">
+            <h3 class="text-base font-extrabold text-gray-900 dark:text-white border-b border-gray-50 dark:border-zinc-800 pb-4 mb-4 flex items-center justify-between">
+              <span>My Order Summary</span>
+              <span id="summary-items-count" class="text-xs bg-orange-500/10 text-orange-500 font-extrabold px-2.5 py-1 rounded-md uppercase">0 Items</span>
+            </h3>
+
+            <!-- Summary Items List -->
+            <div id="summary-items-list" class="max-h-60 overflow-y-auto space-y-4 pr-1 scrollbar-hidden">
+              <!-- Dynamically populated -->
+            </div>
+
+            <!-- Cost Calculations Summary -->
+            <div class="space-y-2 border-t border-gray-50 dark:border-zinc-800/80 mt-6 pt-6 text-xs font-semibold text-gray-500 dark:text-zinc-400">
+              <div class="flex justify-between items-center">
+                <span>Total Food Subtotal</span>
+                <span id="summary-subtotal" class="font-extrabold text-gray-800 dark:text-zinc-200">₹0</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span>GST (5%)</span>
+                <span id="summary-gst" class="font-extrabold text-gray-800 dark:text-zinc-200">₹0</span>
+              </div>
+              <div class="flex justify-between items-center">
+                <span>Delivery Charges</span>
+                <span id="summary-delivery" class="font-extrabold text-gray-800 dark:text-zinc-200">₹40</span>
+              </div>
+              <div id="summary-discount-row" class="flex justify-between items-center text-green-500 font-bold hidden">
+                <span>Applied Promo Saving</span>
+                <span id="summary-discount">-₹0</span>
+              </div>
+            </div>
+
+            <!-- Grand Settle Total -->
+            <div class="flex items-center justify-between border-t border-gray-50 dark:border-zinc-800/80 mt-4 pt-4 mb-6">
+              <span class="text-[10px] font-black uppercase tracking-widest text-gray-400 dark:text-zinc-500">Total Settle amount</span>
+              <span id="summary-grand-total" class="text-2xl font-black text-gray-900 dark:text-white tracking-tight">₹0</span>
+            </div>
+
+            <!-- Placement Action Button -->
+            <button id="place-order-btn" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-extrabold py-4 rounded-xl text-xs uppercase tracking-widest hover:scale-[1.02] active:scale-[0.98] transition-all shadow-md shadow-orange-500/25 cursor-pointer text-center">
+              Place Secure Order
+            </button>
+            
+            <p class="text-[9px] text-gray-400 dark:text-zinc-500 text-center mt-3 font-semibold uppercase tracking-wider">
+              🔒 SSL 256-Bit Encrypted Secure Connection
+            </p>
+          </div>
+        </aside>
+
+      </div>
+    </main>
+
+    <!-- FULL-SCREEN ORDER SUCCESS OVERLAY ANIMATION -->
+    <div id="success-overlay" class="fixed inset-0 bg-gray-950/95 backdrop-blur-xs flex flex-col items-center justify-center p-6 z-50 hidden opacity-0 transition-all duration-500">
+      
+      <!-- Multi-Colored CSS Confetti Layer -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none" id="success-confetti"></div>
+
+      <div class="text-center relative z-10 max-w-lg w-full animate-scale-up">
+        
+        <!-- Large animated bouncy Green checkmark ring -->
+        <div class="w-24 h-24 rounded-full border-4 border-emerald-500 bg-emerald-500/10 flex items-center justify-center mx-auto mb-6 scale-0" id="success-check-ring" style="transition: transform 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);">
+          <svg xmlns="http://www.w3.org/2000/svg" class="w-12 h-12 text-emerald-500 stroke-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-dasharray="100" stroke-dashoffset="100" id="success-check-path">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+          </svg>
+        </div>
+
+        <h2 class="text-2xl sm:text-4xl font-black text-white tracking-tight">Order Confirmed!</h2>
+        <p class="text-xs text-emerald-400 font-bold uppercase tracking-wider mt-1.5" id="success-order-id">ID: BITEDASH-1024-958</p>
+        <p class="text-xs text-gray-400 mt-2 max-w-xs mx-auto leading-relaxed">
+          Your payment has been settled successfully. BiteDash partners are on their way!
+        </p>
+
+        <!-- Simulated active progress timeline tracker -->
+        <div class="mt-10 bg-white/5 border border-white/10 rounded-2xl p-6 text-left" id="delivery-timeline">
+          <h4 class="text-[10px] font-black uppercase tracking-widest text-orange-500 mb-4">Live Delivery Progress</h4>
+          
+          <div class="space-y-6">
+            <!-- Step 1 -->
+            <div class="flex gap-4 relative" id="timeline-step-1">
+              <div class="absolute left-3 top-6 bottom-[-24px] w-[2px] bg-white/10" id="line-step-1"></div>
+              <div class="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center text-white text-xs shrink-0 font-bold relative z-10" id="dot-step-1">1</div>
+              <div>
+                <h5 class="text-xs font-extrabold text-white">Order Placed & Confirmed</h5>
+                <p class="text-[10px] text-gray-400 mt-0.5">Sovereign kitchen accepted and logged your meal.</p>
+              </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="flex gap-4 relative animate-pulse" id="timeline-step-2">
+              <div class="absolute left-3 top-6 bottom-[-24px] w-[2px] bg-white/10" id="line-step-2"></div>
+              <div class="w-6 h-6 rounded-full bg-zinc-800 border border-white/20 flex items-center justify-center text-gray-500 text-xs shrink-0 font-bold relative z-10" id="dot-step-2">2</div>
+              <div>
+                <h5 class="text-xs font-bold text-gray-400" id="title-step-2">Kitchen Preparing Meal</h5>
+                <p class="text-[10px] text-gray-500 mt-0.5">Chefs are slicing, dicing and slow simmering delicacies.</p>
+              </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="flex gap-4 relative" id="timeline-step-3">
+              <div class="absolute left-3 top-6 bottom-[-24px] w-[2px] bg-white/10" id="line-step-3"></div>
+              <div class="w-6 h-6 rounded-full bg-zinc-800 border border-white/20 flex items-center justify-center text-gray-500 text-xs shrink-0 font-bold relative z-10" id="dot-step-3">3</div>
+              <div>
+                <h5 class="text-xs font-bold text-gray-400" id="title-step-3">Rider Assigned</h5>
+                <p class="text-[10px] text-gray-500 mt-0.5">Our nearby delivery partner is speeding to pick up your box.</p>
+              </div>
+            </div>
+
+            <!-- Step 4 -->
+            <div class="flex gap-4" id="timeline-step-4">
+              <div class="w-6 h-6 rounded-full bg-zinc-800 border border-white/20 flex items-center justify-center text-gray-500 text-xs shrink-0 font-bold relative z-10" id="dot-step-4">4</div>
+              <div>
+                <h5 class="text-xs font-bold text-gray-400" id="title-step-4">Out For Delivery</h5>
+                <p class="text-[10px] text-gray-500 mt-0.5">Hot meal is on its way. Ensure gate keys are handy!</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Closing controls -->
+        <button class="mt-8 bg-orange-500 hover:bg-orange-600 text-white font-extrabold text-xs uppercase tracking-widest px-8 py-3.5 rounded-xl cursor-pointer shadow-md inline-block" id="success-done-btn">
+          Return to home
+        </button>
+      </div>
+    </div>
+
+
+    <!-- Page Footer -->
+    <footer class="bg-gray-900 text-gray-300 dark:bg-zinc-950 dark:text-zinc-400 border-t border-gray-800 dark:border-zinc-900 mt-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-12">
+        <!-- Logo and About -->
+        <div class="md:col-span-4 flex flex-col justify-between">
+          <div>
+            <a href="index.html" class="flex items-center gap-2 group">
+              <div class="w-8 h-8 rounded-lg bg-orange-500 flex items-center justify-center text-white font-black text-sm">B</div>
+              <span class="font-black text-base tracking-tight text-white">Bite<span class="text-orange-500">Dash</span></span>
+            </a>
+            <p class="mt-4 text-xs text-gray-400 leading-relaxed font-medium">
+              We're dedicated to bringing your favorite meals closer to you. Seamless food ordering, authentic ingredients, and blazing fast delivery in your area.
+            </p>
+          </div>
+        </div>
+
+        <!-- Links Columns -->
+        <div class="md:col-span-2">
+          <h4 class="text-xs font-black uppercase tracking-widest text-white mb-4">Company</h4>
+          <ul class="space-y-3.5 text-xs font-semibold">
+            <li><a href="#" class="hover:text-orange-500 transition-colors">About Us</a></li>
+            <li><a href="#" class="hover:text-orange-500 transition-colors">Team Careers</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-2">
+          <h4 class="text-xs font-black uppercase tracking-widest text-white mb-4">Legal</h4>
+          <ul class="space-y-3.5 text-xs font-semibold">
+            <li><a href="#" class="hover:text-orange-500 transition-colors">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-orange-500 transition-colors">Terms of Service</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-4">
+          <h4 class="text-xs font-black uppercase tracking-widest text-white mb-4">Contact & Socials</h4>
+          <ul class="space-y-3.5 text-xs font-semibold">
+            <li class="flex items-center gap-2">
+              <span class="text-orange-500">📍</span> 100 Tech Hub Blvd, Silicon Sector
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-orange-500">📧</span> support@bitedash.com
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-gray-800 dark:border-zinc-900 py-6 text-center text-[10px] font-bold text-gray-500 uppercase tracking-widest">
+        &copy; 2026 BiteDash Foodtech Ltd. All Rights Reserved. Crafted with pure dedication.
+      </div>
+    </footer>
+
+    <!-- Core App Module Scripts -->
+    <script type="module" src="/js/app.js"></script>
+    
+    <!-- Inline Checkout Settle & Success Animation Controller -->
+    <script type="module">
+      import { cartManager } from '/js/cart.js';
+      
+      document.addEventListener('DOMContentLoaded', () => {
+        const cart = cartManager.getCart();
+        
+        // 1. Check if Cart is empty
+        if (cart.items.length === 0) {
+          document.getElementById('checkout-container').classList.add('hidden');
+          document.getElementById('checkout-empty-state').classList.remove('hidden');
+          return;
+        }
+
+        // 2. Populate Order Summary column
+        populateOrderSummary();
+
+        // 3. Payment Option toggle inputs
+        setupPaymentToggles();
+
+        // 4. Verification simulation
+        setupUPIVerify();
+
+        // 5. Place order secured action
+        setupOrderSubmission();
+      });
+
+      function populateOrderSummary() {
+        const cart = cartManager.getCart();
+        const itemsList = document.getElementById('summary-items-list');
+        const itemsCount = document.getElementById('summary-items-count');
+
+        itemsCount.textContent = `${cartManager.getCartCount()} Items`;
+
+        itemsList.innerHTML = cart.items.map(item => `
+          <div class="flex justify-between items-center text-xs font-semibold text-gray-700 dark:text-zinc-300">
+            <div class="flex items-center gap-2 max-w-[70%]">
+              <span class="inline-block w-2.5 h-2.5 border ${item.veg ? 'border-green-600 bg-green-500' : 'border-red-600 bg-red-500'} rounded-full shrink-0"></span>
+              <span class="truncate">${item.name} <strong class="text-orange-500">x${item.quantity}</strong></span>
+            </div>
+            <span class="font-extrabold text-gray-900 dark:text-white">₹${item.price * item.quantity}</span>
+          </div>
+        `).join('');
+
+        // Compute pricing rows
+        const subtotal = cartManager.getSubtotal();
+        const gst = cartManager.getGSTAmount();
+        const delivery = cartManager.getDeliveryFee();
+        const discount = cartManager.getDiscountAmount();
+        const grandTotal = cartManager.getGrandTotal();
+
+        document.getElementById('summary-subtotal').textContent = `₹${subtotal}`;
+        document.getElementById('summary-gst').textContent = `₹${gst}`;
+        
+        const delEl = document.getElementById('summary-delivery');
+        if (delivery === 0) {
+          delEl.innerHTML = `<span class="text-green-500 font-bold">FREE</span> <span class="line-through text-gray-400 text-xs ml-1">₹40</span>`;
+        } else {
+          delEl.textContent = `₹${delivery}`;
+        }
+
+        const discRow = document.getElementById('summary-discount-row');
+        const discEl = document.getElementById('summary-discount');
+        if (discount > 0) {
+          discRow.classList.remove('hidden');
+          discEl.textContent = `-₹${discount}`;
+        } else {
+          discRow.classList.add('hidden');
+        }
+
+        document.getElementById('summary-grand-total').textContent = `₹${grandTotal}`;
+      }
+
+      function setupPaymentToggles() {
+        const upiRadio = document.querySelector('input[value="UPI"]');
+        const cardRadio = document.querySelector('input[value="Card"]');
+        const codRadio = document.querySelector('input[value="COD"]');
+
+        const upiBlock = document.getElementById('upi-input-block');
+        const cardBlock = document.getElementById('card-input-block');
+
+        const radios = [upiRadio, cardRadio, codRadio];
+
+        radios.forEach(radio => {
+          if (!radio) return;
+          radio.addEventListener('change', () => {
+            // reset blocks
+            upiBlock.classList.add('hidden');
+            cardBlock.classList.add('hidden');
+
+            // Reset requirements
+            document.getElementById('upi-id').required = false;
+            document.getElementById('card-number').required = false;
+            document.getElementById('card-expiry').required = false;
+            document.getElementById('card-cvv').required = false;
+
+            if (upiRadio.checked) {
+              upiBlock.classList.remove('hidden');
+              document.getElementById('upi-id').required = true;
+            } else if (cardRadio.checked) {
+              cardBlock.classList.remove('hidden');
+              document.getElementById('card-number').required = true;
+              document.getElementById('card-expiry').required = true;
+              document.getElementById('card-cvv').required = true;
+            }
+          });
+        });
+
+        // Setup address type borders
+        const types = ['Home', 'Work', 'Other'];
+        types.forEach(type => {
+          const input = document.querySelector(`input[value="${type}"]`);
+          const label = document.getElementById(`addr-${type.toLowerCase()}-label`);
+          
+          if (input) {
+            input.addEventListener('change', () => {
+              document.querySelectorAll('.address-type-label').forEach(lbl => {
+                lbl.className = "flex items-center justify-center gap-2 py-3 rounded-xl border border-gray-150 dark:border-zinc-850 hover:border-orange-200 text-gray-600 dark:text-zinc-400 text-xs font-semibold cursor-pointer transition-all select-none text-center address-type-label";
+              });
+              label.className = "flex items-center justify-center gap-2 py-3 rounded-xl border border-orange-500 bg-orange-500/5 dark:bg-orange-550/5 text-orange-550 text-xs font-bold cursor-pointer transition-all select-none text-center address-type-label";
+            });
+          }
+        });
+      }
+
+      function setupUPIVerify() {
+        const verifyBtn = document.getElementById('upi-verify-btn');
+        const upiIdInput = document.getElementById('upi-id');
+        const statusMsg = document.getElementById('upi-status-msg');
+
+        if (verifyBtn) {
+          verifyBtn.addEventListener('click', () => {
+            const upiId = upiIdInput.value.trim();
+            if (!upiId || !upiId.includes('@')) {
+              alert('Please enter a valid UPI ID (e.g., yourname@okhdfcbank)');
+              return;
+            }
+
+            verifyBtn.textContent = 'Verifying...';
+            verifyBtn.disabled = true;
+
+            setTimeout(() => {
+              verifyBtn.textContent = 'Verified ✓';
+              verifyBtn.className = 'bg-emerald-500 text-white font-bold text-xs px-4 rounded-xl shrink-0';
+              statusMsg.classList.remove('hidden');
+            }, 1200);
+          });
+        }
+      }
+
+      function setupOrderSubmission() {
+        const orderBtn = document.getElementById('place-order-btn');
+        const form = document.getElementById('checkout-form');
+
+        if (orderBtn) {
+          orderBtn.addEventListener('click', (e) => {
+            // Check form validity
+            if (!form.reportValidity()) {
+              return;
+            }
+
+            e.preventDefault();
+            orderBtn.innerHTML = `
+              <div class="flex items-center justify-center gap-2">
+                <span class="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></span>
+                <span>Securing Settle...</span>
+              </div>
+            `;
+            orderBtn.disabled = true;
+
+            setTimeout(() => {
+              triggerCheckoutSuccess();
+            }, 1800);
+          });
+        }
+      }
+
+      function triggerCheckoutSuccess() {
+        const successOverlay = document.getElementById('success-overlay');
+        const successCheckRing = document.getElementById('success-check-ring');
+        const successCheckPath = document.getElementById('success-check-path');
+        const doneBtn = document.getElementById('success-done-btn');
+        const orderIdEl = document.getElementById('success-order-id');
+
+        // Generate dynamic random Order ID
+        const randomID = "BITEDASH-" + Math.floor(1000 + Math.random() * 9000) + "-" + Math.floor(1000 + Math.random() * 9000);
+        orderIdEl.textContent = `ID: ${randomID}`;
+
+        // Unhide Success Overlay
+        successOverlay.classList.remove('hidden');
+        setTimeout(() => {
+          successOverlay.classList.add('opacity-100');
+          
+          // Animate bouncy check circle scale-up
+          successCheckRing.style.transform = 'scale(1)';
+          
+          // Animate SVG path draw
+          successCheckPath.style.strokeDashoffset = '0';
+          
+          // Build CSS floating Confetti
+          buildConfettiBurst();
+
+          // Begin tracking progress timeline simulation
+          startTimelineProgress();
+        }, 100);
+
+        // Clear cart now that order is confirmed
+        cartManager.clearCart();
+
+        doneBtn.addEventListener('click', () => {
+          window.location.href = 'index.html';
+        });
+      }
+
+      function buildConfettiBurst() {
+        const container = document.getElementById('success-confetti');
+        if (!container) return;
+
+        const colors = ['#FC8019', '#10B981', '#3B82F6', '#EC4899', '#FBBF24'];
+        
+        container.innerHTML = Array.from({ length: 60 }).map(() => {
+          const randColor = colors[Math.floor(Math.random() * colors.length)];
+          const randLeft = Math.random() * 100;
+          const randDelay = Math.random() * 2;
+          const randDur = 3 + Math.random() * 4;
+          const randSize = 6 + Math.random() * 8;
+
+          return `
+            <div class="absolute rounded-full opacity-70 animate-confetti-float" style="
+              background-color: ${randColor};
+              left: ${randLeft}%;
+              width: ${randSize}px;
+              height: ${randSize}px;
+              top: -20px;
+              animation-delay: ${randDelay}s;
+              animation-duration: ${randDur}s;
+            "></div>
+          `;
+        }).join('');
+      }
+
+      function startTimelineProgress() {
+        // Timeline stages
+        const steps = [
+          { dot: 'dot-step-2', line: 'line-step-1', title: 'title-step-2', stepId: 'timeline-step-2' },
+          { dot: 'dot-step-3', line: 'line-step-2', title: 'title-step-3', stepId: 'timeline-step-3' },
+          { dot: 'dot-step-4', line: 'line-step-3', title: 'title-step-4', stepId: 'timeline-step-4' }
+        ];
+
+        let index = 0;
+        
+        const progressInterval = setInterval(() => {
+          if (index >= steps.length) {
+            clearInterval(progressInterval);
+            return;
+          }
+
+          const current = steps[index];
+          
+          // Active dot turns emerald
+          const dot = document.getElementById(current.dot);
+          dot.className = "w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center text-white text-xs shrink-0 font-bold relative z-10 scale-110";
+          
+          // Line turns green
+          const line = document.getElementById(current.line);
+          line.className = "absolute left-3 top-6 bottom-[-24px] w-[2px] bg-emerald-500";
+          
+          // Title turns white/bold
+          const title = document.getElementById(current.title);
+          title.className = "text-xs font-extrabold text-white";
+
+          // Step turns on normal scale
+          const stepId = document.getElementById(current.stepId);
+          stepId.classList.remove('animate-pulse');
+
+          // Next item starts pulsing
+          if (index + 1 < steps.length) {
+            const nextStep = document.getElementById(steps[index + 1].stepId);
+            nextStep.classList.add('animate-pulse');
+            
+            const nextTitle = document.getElementById(steps[index + 1].title);
+            nextTitle.className = "text-xs font-bold text-gray-200";
+            
+            const nextDot = document.getElementById(steps[index + 1].dot);
+            nextDot.className = "w-6 h-6 rounded-full bg-zinc-700 border border-white/20 flex items-center justify-center text-gray-300 text-xs shrink-0 font-bold relative z-10";
+          }
+
+          index++;
+        }, 3500);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+/* Food Delivery Web Application - Mobile & Tablet Screen Enhancements */
+
+/* 1. Touch target sizes on Mobile Devices */
+@media (max-w-640px) {
+  button, a {
+    min-height: 40px; /* touch target helper */
+  }
+}
+
+/* 2. Custom dense grid configurations for extra small devices */
+@media (max-w-380px) {
+  #categories-container {
+    grid-template-cols: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+  
+  .max-w-\[65\%\] {
+    max-width: 55%;
+  }
+}
+
+/* 3. Smooth elastic scroll container indicators on touch surfaces */
+@media (pointer: coarse) {
+  .overflow-x-auto {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  .overflow-x-auto > * {
+    scroll-snap-align: start;
+  }
+}
+
+/* 4. Fine padding compressions to maximize screen estate */
+@media (max-width: 480px) {
+  main {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+    padding-top: 1.5rem !important;
+    padding-bottom: 1.5rem !important;
+  }
+}
